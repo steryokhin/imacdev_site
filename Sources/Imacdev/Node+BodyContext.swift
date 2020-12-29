@@ -34,20 +34,22 @@ extension Node where Context == HTML.BodyContext {
     static func imacdevHeader<T: Website>(for context: PublishingContext<T>, selectedSection: T.SectionID? = nil) -> Node {
         .header(
             .wrapper(
-                .a(
-                    .class("site-name"),
-                    .href("/"),
-                    .text(context.site.name)
+                .wrapper(
+                    .a(
+                        .class("site-name"),
+                        .href("/"),
+                        .text(context.site.name)
+                    )
                 ),
                 .nav(
-                    .ul(.li(
-                            forEach(context.sections, { element -> Node<Context> in
+                    .ul(.forEach(context.sections) {
+                            .li(
                                 .a(
-                                    .href(element.path),
-                                    .text(element.title)
-                                )
-                            }) // For Each
-                        )// li
+                                    .href($0.path),
+                                    .text($0.title)
+                                ) // a
+                            ) // li
+                        } // For Each
                     ) // ul
                 ) // nav
             ) // wrapper
