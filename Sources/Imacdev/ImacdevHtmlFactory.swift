@@ -14,44 +14,21 @@ struct ImacdevHtmlFactory<Site: Website>: HTMLFactory {
         HTML(
             .head(for: index, on: context.site),
             .body(
-                .imacdevHeader(for: context),
-
-                .wrapper(
-                    .ul(
-                        .class("item-list"),
-                        .forEach(
-                            context.allItems(sortedBy: \.date, order: .descending)
-                        ) { item in
-                            .li(
-                                .article(
-                                    .h1(.a(.href(item.path), .text(item.title))),
-                                    .p(.text(item.description))
-                                ) // article
-                            ) // li
-                        } // forEach
-                    ) // ul
-                ) // wrapper
+                .imacdevHeader(for: context)
             ) // body
         ) // HTML
     }
 
     func makeSectionHTML(for section: Section<Site>, context: PublishingContext<Site>) throws -> HTML {
-        try makeIndexHTML(for: context.index, context: context)
+        HTML(
+            .lang(context.site.language),
+            .head(for: section, on: context.site)
+        )
     }
 
     func makeItemHTML(for item: Item<Site>, context: PublishingContext<Site>) throws -> HTML {
         HTML(
-            .head(for: item, on: context.site),
-
-            .body(
-                .imacdevHeader(for: context),
-
-                .wrapper(
-                    .article(
-                        .contentBody(item.body)
-                    )
-                ) //wrapper
-            ) //body
+            .head(for: item, on: context.site)
         )
     }
 

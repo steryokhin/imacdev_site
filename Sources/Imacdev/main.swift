@@ -6,10 +6,10 @@ import Plot
 struct Imacdev: Website {
     enum SectionID: String, WebsiteSectionID {
         // Add the sections that you want your website to contain here:
-        case blog = "Blog"
-        case articles = "Articles"
-        case video = "Video"
-        case about = "About"
+        case blog = "Блог"
+        case articles = "Статьи"
+        case video = "Видео"
+        case about = "Обо мне"
     }
 
     struct ItemMetadata: WebsiteItemMetadata {
@@ -25,4 +25,4 @@ struct Imacdev: Website {
 }
 
 // This will generate your website using the built-in Foundation theme:
-try Imacdev().publish(withTheme: .foundation)
+try Imacdev().publish(withTheme: .imacdevTheme)

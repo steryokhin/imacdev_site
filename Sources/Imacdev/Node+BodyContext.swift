@@ -31,12 +31,24 @@ extension Node where Context == HTML.BodyContext {
 }
 
 extension Node where Context == HTML.BodyContext {
-    static func imacdevHeader<T: Website>(for context: PublishingContext<T>) -> Node {
+    static func imacdevHeader<T: Website>(for context: PublishingContext<T>, selectedSection: T.SectionID? = nil) -> Node {
         .header(
             .wrapper(
-                .nav(
+                .a(
                     .class("site-name"),
-                    .a(.href("/"), .text(context.site.name))
+                    .href("/"),
+                    .text(context.site.name)
+                ),
+                .nav(
+                    .ul(.li(
+                            forEach(context.sections, { element -> Node<Context> in
+                                .a(
+                                    .href(element.path),
+                                    .text(element.title)
+                                )
+                            }) // For Each
+                        )// li
+                    ) // ul
                 ) // nav
             ) // wrapper
         ) // header
