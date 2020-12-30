@@ -8,5 +8,6 @@
 import Foundation
 
 public struct CSS {
-    static var siteName = "site-name"
+    static let siteName = "site-name"
+    static let sectionName = "section-name"
 }

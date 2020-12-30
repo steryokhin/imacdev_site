@@ -1,3 +1,5 @@
+/* imacdevTheme */
+
 /**
 *  Publish Foundation theme
 *  Copyright (c) John Sundell 2019
@@ -43,6 +45,13 @@ header .site-name {
     font-size: 1.5em;
     color: #000;
     font-weight: bold;
+}
+
+h1 .section-name {
+    font-size: 1em
+    color: #F00
+    font-weight: bold
+    text-align: center;
 }
 
 nav {

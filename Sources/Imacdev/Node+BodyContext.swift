@@ -36,7 +36,7 @@ extension Node where Context == HTML.BodyContext {
             .wrapper(
                 .wrapper(
                     .a(
-                        .class(css.siteName),
+                        .class(CSS.siteName),
                         .href("/"),
                         .text(context.site.name)
                     )
@@ -54,6 +54,15 @@ extension Node where Context == HTML.BodyContext {
                 ) // nav
             ) // wrapper
         ) // header
+    }
+
+    static func sectionTitle<T: Website>(section: Section<T>) -> Node {
+        .wrapper(
+            .h1(
+                .class(CSS.sectionName),
+                .text(section.title)
+            )
+        )
     }
 }
 

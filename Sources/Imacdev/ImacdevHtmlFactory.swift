@@ -22,7 +22,11 @@ struct ImacdevHtmlFactory<Site: Website>: HTMLFactory {
     func makeSectionHTML(for section: Section<Site>, context: PublishingContext<Site>) throws -> HTML {
         HTML(
             .lang(context.site.language),
-            .head(for: section, on: context.site)
+            .head(for: section, on: context.site),
+            .body(
+                .imacdevHeader(for: context, selectedSection: section.id),
+                .sectionTitle(section: section)
+            )
         )
     }
 

@@ -11,7 +11,7 @@ import Publish
 extension Theme {
     static var imacdevTheme: Theme {
         Theme(htmlFactory: ImacdevHtmlFactory(),
-              resourcePaths: ["Resources/ImacdevTheme/styles.css"])
+              resourcePaths: ["Resources/imacdevTheme/styles.css"])
     }
 
     static var sundellTheme: Theme {
