@@ -36,7 +36,7 @@ extension Node where Context == HTML.BodyContext {
             .wrapper(
                 .wrapper(
                     .a(
-                        .class("site-name"),
+                        .class(css.siteName),
                         .href("/"),
                         .text(context.site.name)
                     )
