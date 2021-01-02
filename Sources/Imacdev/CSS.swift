@@ -10,4 +10,5 @@ import Foundation
 public struct CSS {
     static let siteName = "site-name"
     static let sectionName = "section-name"
+    static let selected = "selected"
 }
