@@ -43,6 +43,10 @@ header {
     background-color: var(--dark-background);
 }
 
+a .header-container {
+    text-align: center;
+}
+
 header .wrapper {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -53,10 +57,18 @@ header a {
     text-decoration: none;
 }
 
-header .site-name {
+header .header-text {
     font-size: 1.5em;
     color: var(--primary-text-color);
     font-weight: bold;
+    vertical-align:middle;
+}
+
+header .header-logo {
+    margin-right: 8px;
+    width: 30px;
+    height: 30px;
+    vertical-align:middle;
 }
 
 /* NAV */

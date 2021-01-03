@@ -8,7 +8,9 @@
 import Foundation
 
 public struct CSS {
-    static let siteName = "site-name"
+    static let headerText = "header-text"
     static let sectionName = "section-name"
     static let selected = "selected"
+    static let headerContainer = "header-container"
+    static let headerLogo = "header-logo"
 }

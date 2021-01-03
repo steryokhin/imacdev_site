@@ -35,9 +35,16 @@ extension Node where Context == HTML.BodyContext {
         .header(
             .wrapper(
                 .a(
-                    .class(CSS.siteName),
+                    .class(CSS.headerContainer),
                     .href("/"),
-                    .text(context.site.name)
+                        .img(
+                            .class(CSS.headerLogo),
+                            .src("/images/logo.png")
+                        ),
+                        .span(
+                            .class(CSS.headerText),
+                            .text(context.site.name)
+                        )
                 ),
                 .nav(
                     .ul(.forEach(context.sections) {
