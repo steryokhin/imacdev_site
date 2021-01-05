@@ -25,19 +25,38 @@ struct ImacdevHtmlFactory<Site: Website>: HTMLFactory {
             .head(for: section, on: context.site),
             .body(
                 .imacdevHeader(for: context, selectedSection: section.id),
-                .sectionTitle(section: section)
+                .sectionTitle(section: section),
+                .wrapper(
+                    .itemList(for: section.items, on: context.site)
+                ),
+                .footer(for: context.site)
             )
         )
     }
 
     func makeItemHTML(for item: Item<Site>, context: PublishingContext<Site>) throws -> HTML {
         HTML(
-            .head(for: item, on: context.site)
+            .lang(context.site.language),
+            .head(for: item, on: context.site),
+            .body(
+                .imacdevHeader(for: context, selectedSection: item.sectionID),
+                .wrapper(
+                    .article(
+                        .div(
+                            .class("article"),
+                            .contentBody(item.body)
+                        ),
+                        .span("Tagged with: "),
+                        .tagList(for: item, on: context.site)
+                    )
+                )
+            )
         )
     }
 
     func makePageHTML(for page: Page, context: PublishingContext<Site>) throws -> HTML {
-        try makeIndexHTML(for: context.index, context: context)
+        HTML(
+        )
     }
 
     func makeTagListHTML(for page: TagListPage, context: PublishingContext<Site>) throws -> HTML? {

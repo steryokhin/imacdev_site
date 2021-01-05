@@ -13,4 +13,5 @@ public struct CSS {
     static let selected = "selected"
     static let headerContainer = "header-container"
     static let headerLogo = "header-logo"
+    static let tagList = "tag-list"
 }

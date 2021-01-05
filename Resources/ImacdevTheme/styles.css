@@ -1,6 +1,5 @@
 /**
-*  Publish Foundation theme
-*  Copyright (c) John Sundell 2019
+*  Copyright (c) Serhii Terokhyn 2021
 *  MIT license, see LICENSE file for details
 */
 
@@ -25,7 +24,7 @@
 
 body {
     background: var(--dark-light-background);
-    color: var(--secondary);
+    color: var(--primary-text-color);
     font-family: Helvetica, Arial;
     text-align: center;
 }
@@ -105,53 +104,96 @@ nav li:hover {
     font-weight: medium;
 }
 
+/* COMMON */
 h1 {
+    text-decoration-style: solid;
     margin-bottom: 20px;
     font-size: 2em;
 }
 
 h2 {
+    text-decoration-style: solid;
     margin: 20px 0;
 }
 
+h3 {
+    text-decoration-style: solid;
+}
+
+h4 {
+    text-decoration-style: solid;
+}
+
 p {
+    color: var(--primary-text-color);
     margin-bottom: 10px;
 }
 
 a {
-    color: inherit;
+    color: var(--primary-text-color);
 }
 
 .description {
     margin-bottom: 40px;
 }
 
-.item-list > li {
-    display: block;
-    padding: 20px;
-    border-radius: 20px;
-    background-color: #eee;
-    margin-bottom: 20px;
+/* item */
+.item-list {
+    background-color: var(--primary);
+    border-radius: 15px;
+    padding: 10px;
+    row-gap: 0;
 }
 
-.item-list > li:last-child {
-    margin-bottom: 0;
-}
-
-.item-list h1 {
+/* ARTICLE  */
+article h1 {
+    font-size: 2.5em;
     margin-bottom: 15px;
-    font-size: 1.3em;
+    line-height: 1.2em;
+    max-width: 95%;
 }
 
-.item-list p {
-    margin-bottom: 0;
+article h1.smaller {
+    font-size: 2.3em;
 }
 
-.content {
-    margin-bottom: 40px;
+article h2, .discover .content h2 {
+    font-size: 1.5em;
+    margin: 25px 0 20px 0;
 }
 
-.browse-all {
-    display: block;
-    margin-bottom: 30px;
+article h3 {
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+article .metadata {
+    margin-bottom: 23px;
+}
+
+article .date {
+    color: #555;
+}
+
+article p, .discover .content p {
+    margin-top: 20px;
+    font-size: 1.05em;
+    line-height: 1.5;
+}
+
+article .recommendation {
+    display: inline-block;
+    border-radius: 7px;
+    color: #fff;
+    padding: 7px 7px 7px 33px;
+    font-size: 0.9em;
+}
+
+article p.info, blockquote p, .sponsorship .content > ul, .services .content > ul {
+    position: relative;
+    background-color: #efefef;
+    padding: 10px 10px 10px 15px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border-left: 4px solid #ff644e;
 }
