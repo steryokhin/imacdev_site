@@ -3,13 +3,13 @@ import Publish
 import Plot
 
 // This type acts as the configuration for your website.
-struct Imacdev: Website {
+struct ImacdevWebsite: Website {
     enum SectionID: String, WebsiteSectionID {
         // Add the sections that you want your website to contain here:
-        case blog = "Blog"
-        case articles = "Articles"
-        case video = "Video"
-        case about = "About"
+        case blog
+        case development
+        case video
+        case about
     }
 
     struct ItemMetadata: WebsiteItemMetadata {
@@ -25,4 +25,20 @@ struct Imacdev: Website {
 }
 
 // This will generate your website using the built-in Foundation theme:
-try Imacdev().publish(withTheme: .foundation)
+//try ImacdevWebsite().publish(withTheme: .sundellTheme)
+try ImacdevWebsite().publish(withTheme: .imacdevTheme)
+
+extension ImacdevWebsite.SectionID {
+    func displayName() -> String { //where Site == ImacdevWebsite {
+        switch self {
+        case .blog:
+            return "Блог"
+        case .development:
+            return "Разработка"
+        case .video:
+            return "Видео"
+        case .about:
+            return "Обо мне"
+        }
+    }
+}

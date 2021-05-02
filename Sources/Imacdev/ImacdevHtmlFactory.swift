@@ -14,49 +14,49 @@ struct ImacdevHtmlFactory<Site: Website>: HTMLFactory {
         HTML(
             .head(for: index, on: context.site),
             .body(
-                .imacdevHeader(for: context),
-
-                .wrapper(
-                    .ul(
-                        .class("item-list"),
-                        .forEach(
-                            context.allItems(sortedBy: \.date, order: .descending)
-                        ) { item in
-                            .li(
-                                .article(
-                                    .h1(.a(.href(item.path), .text(item.title))),
-                                    .p(.text(item.description))
-                                ) // article
-                            ) // li
-                        } // forEach
-                    ) // ul
-                ) // wrapper
+                .imacdevHeader(for: context)
             ) // body
         ) // HTML
     }
 
     func makeSectionHTML(for section: Section<Site>, context: PublishingContext<Site>) throws -> HTML {
-        try makeIndexHTML(for: context.index, context: context)
+        HTML(
+            .lang(context.site.language),
+            .head(for: section, on: context.site),
+            .body(
+                .imacdevHeader(for: context, selectedSection: section.id),
+                .sectionTitle(section: section),
+                .wrapper(
+                    .itemList(for: section.items, on: context.site)
+                ),
+                .footer(for: context.site)
+            )
+        )
     }
 
     func makeItemHTML(for item: Item<Site>, context: PublishingContext<Site>) throws -> HTML {
         HTML(
+            .lang(context.site.language),
             .head(for: item, on: context.site),
-
             .body(
-                .imacdevHeader(for: context),
-
+                .imacdevHeader(for: context, selectedSection: item.sectionID),
                 .wrapper(
                     .article(
-                        .contentBody(item.body)
+                        .div(
+                            .class("article"),
+                            .contentBody(item.body)
+                        ),
+                        .span("Tagged with: "),
+                        .tagList(for: item, on: context.site)
                     )
-                ) //wrapper
-            ) //body
+                )
+            )
         )
     }
 
     func makePageHTML(for page: Page, context: PublishingContext<Site>) throws -> HTML {
-        try makeIndexHTML(for: context.index, context: context)
+        HTML(
+        )
     }
 
     func makeTagListHTML(for page: TagListPage, context: PublishingContext<Site>) throws -> HTML? {
